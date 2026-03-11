@@ -1,0 +1,64 @@
+/*id selector*/
+#login {
+    background-color:pink
+}
+#signup{
+    background-color:red;
+}
+/*class selector*/
+.upvote{
+    color:blue;
+}
+/* descendent selector */
+p a{
+    background-color:pink
+}
+div > input{background-color:pink;
+}
+/*attributr selector*/
+input [type=text]{
+    color: blueviolet
+}
+input[type]{
+    background-color: bisque;
+}
+/*pq*/
+div[id=myid] p {
+    color:green ;
+}
+/*pseudo class*/
+/*hover*/
+button:hover{
+    color: aliceblue;
+    background-color: black;
+}
+/*active*/
+button:active{
+    color: red
+}
+/*checked*/
+input[type="radio"]:checked + label{
+    color: brown;
+}
+/*nth of type*/
+.post:nth-of-type(2){
+    background-color: paleturquoise
+}
+/*pseudo element*/
+/*first letter*/
+h1::first-letter{
+    color: blueviolet;
+}
+/*first line*/
+p::first-line{
+    color: aquamarine;
+}
+/*selection*/
+p::selection{
+    background-color: brown;
+}
+/*inheritance*/
+div{
+    color: aqua;
+    background-color: black;
+}
