@@ -1,0 +1,82 @@
+.container {
+    margin: 0;/* remove all default spacing*/
+    padding: 0;/* remove all default spacing*/
+    height: 100vh;/*100 percent of the viewport height(full screen height)*/
+    display: grid;/*turn a cont. into grid so children can be placed in row column*/
+    grid-template-columns: repeat(12, 1fr);/* creates 12 columns of equal width*/
+    grid-template-rows: repeat(12, 1fr);/* creates 12 rows of equal width*/
+    grid-gap: 10px;/* add 10x space between all grid items*/
+
+}
+.container div {
+    background-color: pink;
+    font-size:1.5rem;/*apply color and bigger font to all inside div or children*/
+}
+.header {
+    grid-column: 1/ span 12;/*header starts at column 1 and spend all 12 columns*/
+}
+.sidebar {
+    grid-column: 1/ span 3;
+    grid-row: 2/ span 10;/* Sidebar starts at **column 1**, spans **3 columns** wide*/
+    /*Starts at **row 2**, spans **10 rows** tall
+- So sidebar is on the **left side**,*/
+}
+.footer {
+    grid-column: 1/ span 12;
+    grid-row: 12/ span 12;
+}
+.navigation {
+    grid-column: 4/span 6;
+    grid-row: 2/span 1;
+}
+.main {
+    grid-row: 3/ span 9;
+    grid-column: 4/ span 6;
+}
+.ads {
+    grid-row: 2/ span 10;
+    grid-column: 10/span 3;
+}
+@media (max-width : 20px) {
+    .header {
+        grid-column: 1/ span 12;
+    }
+    .sidebar {
+        grid-column: 1/ span 12;
+        grid-row: 2/ span 1;
+    }
+    .navigation {
+        grid-column: 1/ span 12;
+        grid-row: 3/ span 1;
+    }
+    .main {
+        grid-column: 1/ span 12;
+        grid-row: 4/ span 9;
+    }
+    .ads {
+        grid-column: 1/ span 12;
+        grid-row: 13/ span 1;
+    }
+    .footer {
+        grid-column: 1/ span 12;
+        grid-row: 14/ span 1;
+    }    
+   
+}
+.loader {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid goldenrod;
+    border-radius: 50%;/*makes the loader circle*/
+    width: 120px;/*size of the circle*/
+    height: 120px;/* size of the circle*/
+    animation: spin 2s linear infinite;/*Applies the spin animation, runs every 2 seconds, at constant speed, forever*/
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);/* Set rotation to 0 degrees */
+    }
+    100% {
+        transform: rotate(360deg);/* Set rotation to 360 degrees */
+    }
+}               
