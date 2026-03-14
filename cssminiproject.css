@@ -1,0 +1,137 @@
+
+* {
+    margin:0;/*first step preferred*/
+    padding:0;/*to remove the default margin and padding of the browser to get clean slate*/
+    font-family:poppins, sans-serif;
+}
+.main_box {
+    background: url("photo.jpg");
+    height: 100vh;
+    
+}
+/*pehla checkbox ke liye styling karte hain, checkbox ko hide karna hai to display:none karenge*/
+/*main box pure website ki height le le to phir give div height:100% for viewport's 100 percent height it should be 100vh*/
+.btn_one i {/*for icon we add i earleir it was till btn_two*/
+    color:white;/*to highlight the color*/
+    font-size:30px;/*to increase the size of the icon*/
+    font-weight:700;
+    position:absolute;/*to position the button absolutely within the main box*/
+    left: 16px;/*to give some space from the left edge of the main box*/
+    line-height: 60px;/*to align the icon vertically in the center of the button*/
+    transition: all 0.3s linear;/*button par pop up nhi linearly aaye*/
+    
+}
+
+
+/*ab sidebar menu ke liye styling karte hain, sidebar menu ko fixed position denge taki wo scroll ke sath move na kare*/
+.sidebar_menu {
+    position:fixed;
+    left: -350px;/*to hide the sidebar menu by default, we will change this value to 0 when the checkbox is checked*/
+    height: 100vh;
+    width: 300px;
+    background-color: rgba(255,255,255,0.1);
+    box-shadow: 0 0 6px rgba(255,255,255,0.5);
+    transition: all 0.3s linear;/*side bar menu par pop up nhi linearly aaye*/
+}
+/* ab sidebar ke logo ke liye styling karte hain, logo ko sidebar menu ke andar rakhna hai to usko position:absolute denge taki wo sidebar menu ke andar position ho jaye*/
+.sidebar_menu .logo {
+    width:100%;
+    line-height: 60px;
+    box-shadow: 0 0 4px rgba(255,255,255,0.5);
+    height:60px;/*to highlight apna colleege part when it appears after clicking*/
+}
+/*logo ke text ke liye styling karte hain*/
+.sidebar_menu .logo a {
+    position:absolute;
+    left: 50px;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+}
+/*logo ke button ke liye styling karte hain*/
+.sidebar_menu .btn_two i/*for icon we add i earleir it was till btn_two*/ {
+    color:grey;/*to highlight the color*/
+    font-size:25px;/*to increase the size of the icon*/
+    line-height:60px;
+    position:absolute;/*to position the button absolutely within the main box*/
+    left: 260px;/*to give some space from the left edge of the main box*/
+    opacity: 0;
+    top: 0;
+    cursor:pointer;/*to change the cursor to pointer when hovering over the button*/
+    transition: all 0.3s linear;/*btn two par pop up nhi linearly aaye*/
+
+}
+
+
+/* ab menu ke liye styling karte hain */
+.sidebar_menu .menu {
+    position:absolute;
+    width: 100%;
+    top: 80px;
+}
+.sidebar_menu .menu li {
+    margin-top: 6px;/*to give some space between the menu items*/
+    padding: 10px 20px;/*to give top bottom 10 left right 20 padding to the menu items*/
+
+}
+/*icons aur anchor tag dono ke liye color white karna hai to dono ko ek sath select karenge*/
+.sidebar_menu .menu i,a {
+    color:white;/*to highlight the color of the menu items*/
+
+} 
+.sidebar_menu .menu i {
+    padding-right: 10px/*icon ke right side me thoda space dene ke liye icon aur text me space aa jayga*/
+}
+/* now social media bar ke liye */
+.sidebar_menu .social_media {
+    position:absolute;
+    left: 25%;
+    bottom: 20px;
+
+}
+/* social media bar ke icons ke liye*/
+.sidebar_menu .social_media i {
+    color:white;
+    opacity: 0.5;
+    padding: 5.5px;/*to give some space between the social media icons*/
+}
+/*checkbox abhi hume screen par nhi chahiye to usko hide karte hain*/
+#check {
+    display:none; /*or opacity:0*/ /*to hide the checkbox from the screen, we will use it to control the visibility of the sidebar menu and the buttons*/
+}
+/*sidebar menu ke itemps par hover karne par hover shadow dena chahte hai*/
+.sidebar_menu .menu li:hover {
+    box-shadow: 0 0 4px rgba(255,255,255,0.5);
+    
+}
+/*abhi humne set nhi kiya cursor aur hume uss par btn one par click karke size bada karna hai*/
+.btn_one i:hover {/*for icon we add i earleir it was till btn_two*/
+    font-size:50px;
+    /*ye nhi bada hoga hum do layer me kaam kar rhe isliye abhi*/
+}
+.btn_two i:hover {/*for icon we add i earleir it was till btn_two*/
+    font-size:35px;
+    
+}
+/*social media icons par hover karne par kya ho*/
+.social_media i:hover{
+    opacity:1;/*to make the social media icons fully visible when hovered over opacity 0.5 to 1*/
+    transform: scale(1.2);/*to increase the size of the social media icons when hovered over*/
+}
+/*finally button se hum kya control karge
+checkbox ke sibling hai btn_one aur side bar menu dono, to checkbox ke checked hone par btn_one aur sidebar menu dono ko show karna hai,
+checkbox ke through, jab checkbox checked hoga to sidebar menu show hoga aur jab unchecked hoga to sidebar menu hide hoga*/
+#check:checked ~ .sidebar_menu {
+    left:0;/*to show the sidebar menu when the checkbox is checked*/
+}
+/*check hone ke baad teen line/btnone htana to phir uske liye*/
+#check:checked ~ .btn_one i {
+    display:none;/*to hide the btn_one icon when the checkbox is checked or opacity:0*/
+}
+/* cross ko wapas se lane ke liye check karne par cross ko show karna hai*/
+#check:checked ~ .sidebar_menu .btn_two i {
+    opacity:1;
+}
+/*side bar menu par pop up nhi linearly aaye*/
+
