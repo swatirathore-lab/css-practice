@@ -1,0 +1,214 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;/*to include the padding and border in the total width and height of the elements*/  
+    /*content-box:  [padding | CONTENT | padding]  → box grows outward
+border-box:   [padding | content | padding]  → box stays same size
+Why add it in *?
+css* {
+    box-sizing: border-box;
+}
+This applies it to every element globally, which is considered a best practice in modern CSS because it makes layouts predictable. Almost every professional CSS codebase includes this.
+In your Spotify clone specifically, it prevents your .sidebar (340px) from accidentally overflowing its container when you add padding to it.*/
+}
+.main {
+    display:flex;
+    background-color: black;
+    height: 100vh;
+    
+}
+.sidebar {
+    width:340px;
+    background-color:black;/*color picker used to get the exact color of spotify sidebar*/
+    height:100vh;/*to make the sidebar take the full height of the viewport*/
+    border-radius:1rem;/*to give rounded corners to the sidebar i rem is equal to 16px*/
+    margin-right:1rem;/*to add some space between the sidebar and the main content for better spacing*/
+}
+.mainbar {
+    background-color:black;
+    height:100vh;
+    flex:1;/*to make the main content take the remaining space in the flex container*/
+    
+    border-radius:1rem;
+    overflow:auto;/*to add a scrollbar to the main content if the content exceeds the height of the viewport*/  
+
+}
+.music-player {
+    background-color:cadetblue;
+    position:fixed;/*to make the music player fixed at the bottom of the page*/
+    bottom:0px;/*to make the music player stick to the bottom of the page*/
+    width:100%;
+    height:74px;
+}
+a {/*to remove the default underline from the links and set the color to white*/    
+    text-decoration:none;
+    color:white;
+}
+.nav {
+    background-color:#121212;
+    border-radius: 1rem;
+    display:flex;/*display dete hi sare items ek line horizontally align ho jate hai*/
+    flex-direction: column;/*main axis becomes vertical now*/
+    justify-content: center;/*to center the items horizontally in the nav bar*/
+    height:100px;
+    padding:0.5rem 0.75rem;
+}
+.nav-option {
+    line-height: 2.5rem;/*spacing me line set karne ke liye*/
+    opacity:0.7;/*to make the nav options slightly transparent by default*/
+    padding:0.5rem 0.75rem;/*to add some padding around the nav options for better spacing*/
+}
+.nav-option i {
+    margin-right: 1.5rem;/*to add some space between the icon and the text in the nav options*/
+}
+.nav-option a{/*don't keep spacine between 1 and rem because it will be considered as 1.5rem and it will give more space than we want*/
+    font-size: 1rem;/*to set the font size of the nav options*/
+    margin-left: 1rem;/*text aur icon me space ke liye ye code use karte hai*/
+}
+/*jab kisi bhi block par click karte to phir wo light ho jata hai uske liye ye code use karte hai*/
+.nav-option:hover {
+    opacity: 1;/*to make the nav option slightly transparent when hovered over*/
+}
+/*ab library section par kaam karege*/
+.library {
+    background-color:#121212;
+    border-radius: 1rem;
+    margin: 0.5rem ;/*to add some margin around the library section for better spacing*/
+    padding: 0.5rem 0.75rem;/*to add some padding inside the library section for better spacing*/
+    
+}
+.options {
+    display:flex;
+    justify-content: space-between;/*to align the library options horizontally and add space between them*/
+    align-items:center;/*to vertically center the library options within the container*/
+    
+}
+.lib-option {
+    display: flex;        /* add this */
+    align-items: center;  /* add this */
+    gap: 0.75rem;         /* this adds space between icon and text */
+}
+.lib-option img {
+    height: 1.25rem;/*to set the height of the library options to 1.25 times the font size of the element*/
+    width: 1.25rem;/*to set the width of the library options to 1.25 times the font size of the element kyuki upar walo ki bhi yhi hai*/
+}
+.icons {
+    font-size: 1.25rem;/*to set the font size of the icons in the library options to 1.25 times the font size of the element*/
+    display:flex;/*to align the icons and text in the library options horizontally*/
+}
+.icons i {
+    opacity:0.7;/*to make the icons in the library options slightly transparent by default*/
+    margin-right:1rem;/*to add some space between the icons in the library options and the text*/
+}
+.icons i:hover {
+    opacity:1;/*to make the icons in the library options fully opaque when hovered over*/
+}
+/*now we will edit library boxes let's goooo*/
+
+.lib-box {/*to add space between upper thing and these boxes*/
+    margin-top: 1.5rem;
+    padding: 0.5rem 0.75rem;
+    background-color:#232323;
+    height:8rem;
+}/*Sure!
+**`margin-top: 1.5rem`**
+This adds space **outside** the `.lib-box`, pushing it away from the element above it (the "Your Library" header). Think of it as personal space around the box.
+[ Your Library  + → ]
+        ↕ 1.5rem gap   ← this is margin-top
+[ Create your first playlist ]
+**`padding: 0.5rem 0.75rem`**
+This adds space **inside** the `.lib-box`, between the box's border and its content (the text).
+```
+0.5rem shorthand me 2 values hote hain:
+padding: top/bottom   left/right
+         0.5rem       0.75rem
+So:
+- Top and bottom inside spacing = `0.5rem`
+- Left and right inside spacing = `0.75rem`
+**Simple analogy:**
+```
+margin  = space OUTSIDE the box (distance from neighbors)
+padding = space INSIDE the box  (distance from your own walls)
+Like a room in a building:
+- **Margin** = gap between your room and the next room
+- **Padding** = gap between your room's wall and your furniture*/
+
+.box-p1 {
+    font-size: 1.25rem;/*to set the font size of the first paragraph in the library boxes to 1.25 times the font size of the element*/
+    font-weight: 700;/*to make the first paragraph in the library boxes bold*/
+    margin-bottom: 0.5rem;/*to add some space below the first paragraph in the library boxes for better spacing*/
+}
+.box-p2 {
+    font-size: 0.75rem;/*to set the font size of the second paragraph in the library boxes to 0.875 times the font size of the element*/
+    opacity:0.9;/*to make the second paragraph in the library boxes slightly transparent*/
+}
+.badge {
+    background-color:white;
+    color:black;
+    margin-top: 1.5rem;/*to add some space above the badge for better spacing*/
+    padding:4px 16px;
+    border-radius: 9999px;/*to give the badge a pill-shaped appearance by making the border radius very large*/
+    font-size: 0.75rem;/*to set the font size of the badge to 0.875 times the font size of the element*/
+    font-weight: 700;/*to make the text in the badge bold*/
+}
+/*main bar par aa jana hai nav bar se suru*/
+.sticky-nav {
+    position:sticky;/*to make the nav bar stick to the top of the main content when scrolling*/
+    top:0px;/*to set the distance from the top of the viewport when the nav bar becomes sticky*/
+    z-index: 1;/*to ensure the sticky nav bar stays above other content when scrolling*/
+    background-color:#121212;/*to set the background color of the sticky nav bar to grey for better visibility when it becomes sticky*/
+    display:flex;/*to align the items in the sticky nav bar horizontally*/
+    justify-content: space-between;/*to add space between the items in the sticky nav bar*/
+    align-items: center;/*to vertically center the items in the sticky nav bar*/
+    padding:1rem 0 1rem 0rem;/*to add some padding around the items in the sticky nav bar for better spacing*/
+}
+.sticky-nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 1rem;  /* push away from left edge */
+}
+
+.sticky-nav-icons img {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.sticky-nav-options {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 1rem;  /* push away from right edge */
+}
+.sticky-nav-options .badge {
+    margin-top: 0;  /* override the margin-top from .badge */
+    
+}
+.sticky-nav-options .dark-badge {
+    margin-top: 0;  /* override the margin-top from .badge */
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+}
+@media (max-width: 1000px) {
+    .hide {
+        display:none;
+    }
+}
+.card {
+    background-color:#121212;
+    width: 150px;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    
+}
+.card-container {
+    display:flex;
+}
+.card-img {
+    width: 100%;
+    border-radius: 0.5rem 0.5rem 0 0;/*to give rounded corners to the top of the card and keep the bottom corners square*/
+}
