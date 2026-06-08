@@ -36,7 +36,7 @@ In your Spotify clone specifically, it prevents your .sidebar (340px) from accid
 
 }
 .music-player {
-    background-color:cadetblue;
+    background-color:black;
     position:fixed;/*to make the music player fixed at the bottom of the page*/
     bottom:0px;/*to make the music player stick to the bottom of the page*/
     width:100%;
@@ -157,7 +157,7 @@ Like a room in a building:
 .sticky-nav {
     position:sticky;/*to make the nav bar stick to the top of the main content when scrolling*/
     top:0px;/*to set the distance from the top of the viewport when the nav bar becomes sticky*/
-    z-index: 1;/*to ensure the sticky nav bar stays above other content when scrolling*/
+    z-index: 10;/*to ensure the sticky nav bar stays above other content when scrolling*/
     background-color:#121212;/*to set the background color of the sticky nav bar to grey for better visibility when it becomes sticky*/
     display:flex;/*to align the items in the sticky nav bar horizontally*/
     justify-content: space-between;/*to add space between the items in the sticky nav bar*/
@@ -198,17 +198,121 @@ Like a room in a building:
         display:none;
     }
 }
-.card {
+.card {/*Problem 1: Cards are too big / not in a row properly
+Your .card has width: 150px but no flex-wrap and the card image has no fixed height, so it stretches based on the image size. The cards in "Trending now" are huge and overlapping.*/
     background-color:#121212;
     width: 150px;
+    min-width: 150px;   /* ADD THIS - prevents shrinking */
     border-radius: 0.5rem;
-    padding: 1rem;
+    padding: 0rem;
+    overflow: hidden;   /*Problem 3: Card background only half — not covering the full card
+Your .card has padding: 1rem but no overflow: hidden, so the image sits on top of the background weirdly. Add this:*/
     
 }
-.card-container {
-    display:flex;
+.cards-container {
+    display: flex;
+    gap: 1rem;            /* ADD THIS - space between cards */
+    flex-wrap: wrap;      /* ADD THIS - wraps on smaller screens */
+    padding: 1rem 0;      /* ADD THIS - breathing room */
 }
-.card-img {
+.card-img {/*Problem 1: Featured Charts images are cut off (left side missing)
+Your card has padding: 1rem but the image doesn't go edge-to-edge because of it. The image needs negative margin to escape the padding:
+css.card-img */
     width: 100%;
-    border-radius: 0.5rem 0.5rem 0 0;/*to give rounded corners to the top of the card and keep the bottom corners square*/
+    height: 150px;
+    object-fit: cover;
+    border-radius: 0.5rem 0.5rem 0 0;
 }
+.card-title {
+    font-weight:600;/*to make the card title bold*/
+    padding: 0.5rem 0.75rem 0 0.75rem;  /* ADD padding here */
+}
+.card-information {
+    font-size: 0.85rem;/*to set the font size of the card info to 0.875 times the font size of the element*/
+    opacity: 0.8;/*to make the card info slightly transparent*/
+    padding: 0.25rem 0.75rem 0.75rem 0.75rem;  /* ADD padding here */
+}
+.mainbar h2 {
+    padding: 1.5rem 1rem 0.5rem 1rem;
+}/*to add some padding around the h2 heading in the main content for better spacing*/
+/*footer par kaam karte hai*/
+.footer {
+   height: 300px;/*to set the height of the footer to 300px*/
+   display:flex;/*to align the items in the footer horizontally*/
+   align-items: center;/*to vertically center the items in the footer*/
+   justify-content: center;/*to horizontally center the items in the footer*/
+}
+.line {
+    width:90%;
+    height:30%;
+    border-top: 1px solid white;/*to add a white horizontal line in the footer*/
+    opacity:0.4;/*to make the horizontal line in the footer slightly transparent*/
+    margin: 2rem auto;/*to center the horizontal line in the footer and add some space above and below it for better spacing*/
+}
+/*Setting up player*/
+/*side wale dono portion homework me karne*/
+.music-player {
+    display:flex;/*to align the items in the music player horizontally*/
+    justify-content: space-between;
+}
+.album {
+    width:25%;/*to set the width of the album section in the music player to 25% of the total width of the music player*/
+}
+.player {
+    width: 50%;/*to set the width of the player section in the music player to 50% of the total width of the music player*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.controls {
+    width:25%;/*to set the width of the controls section in the music player to 25% of the total width of the music player*/
+}
+/*player controls*/
+.player-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.player-control-icon {
+    height: 1rem;
+    margin-left: 2rem;
+    opacity: 0.7;
+}
+.player-control-icon:hover {
+    opacity:1;
+
+}
+/*to increase the playerbar length*/
+.playback-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;        /* ADD THIS */
+}
+
+.progress-bar {
+    flex: 1;            /* takes up all remaining space */
+    appearance: none; /*now start making changes*/
+    background-color: transparent;
+    cursor:pointer;
+
+}
+.progress-bar::-webkit-slider-runnable-track{
+    background-color:#dddddd;
+    border-radius:100px;
+    height:0.2rem;
+    
+}
+.progress-bar::-webkit-slider-thumb {
+    appearance: none;
+    height:1rem;
+    width:1rem;
+    background-color:#1bd760;
+    border-radius:50%;
+    margin-top:-6px;
+}
+
+
